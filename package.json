@@ -6,6 +6,10 @@
   "repository": "https://github.com/jphilipstevens/rest-express-skeleton.git",
   "author": "jonathan.philip.stevens@gmail.com",
   "license": "MIT",
+  "engines": {
+    "node": "^9.11.0",
+    "npm": "^5.0.0"
+  },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
     "test": "NODE_ENV=test MOCHA_FILE=./build/reports/test/junit.xml nyc mocha --reporter mocha-junit-reporter",
