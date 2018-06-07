@@ -26,7 +26,7 @@ jobs:
             - run:
                 name: Run Unit Tests
                 command: npm run test:ci
-             - run:
+            - run:
                 name: Run compile
                 command: npm run compile
             - store_test_results:
