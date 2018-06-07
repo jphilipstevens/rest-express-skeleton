@@ -12,9 +12,11 @@
   },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
+    "coverage": "npm run test",
+    "test:ci": "npm run test && nyc report --reporter=text-lcov | coveralls",
     "test": "NODE_ENV=test MOCHA_FILE=./build/reports/test/junit.xml nyc mocha --reporter mocha-junit-reporter",
     "compile": "babel src --out-dir dist --source-maps inline",
-    "prebuild": "npm run test",
+    "prebuild": "npm run coverage",
     "build": "npm run compile"
   },
   "devDependencies": {
@@ -24,9 +26,51 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2017": "^6.24.1",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
     "mocha": "^5.0.5",
     "mocha-junit-reporter": "^1.17.0",
     "nyc": "^11.6.0"
+  },
+  "nyc": {
+    "include": [
+      "src/*.js",
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/types.js",
+      "src/**/types.js",
+      "src/**/index.js",
+      "test",
+      "types"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "reporter": [
+      "lcov",
+      "html",
+      "text-summary",
+      "text"
+    ],
+    "watermarks": {
+      "lines": [
+        80,
+        95
+      ],
+      "branches": [
+        80,
+        95
+      ],
+      "functions": [
+        80,
+        95
+      ],
+      "statements": [
+        80,
+        95
+      ]
+    },
+    "all": true
   }
 }

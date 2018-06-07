@@ -24,8 +24,11 @@ jobs:
                 name: Run Static Analysis Test
                 command: npm run lint
             - run:
-                name: Run Unit Tests and Build
-                command: npm run build
+                name: Run Unit Tests
+                command: npm run test:ci
+            - run:
+                name: Run compile
+                command: npm run compile
             - store_test_results:
                 path: ./build/reports/test
             - store_artifacts:
