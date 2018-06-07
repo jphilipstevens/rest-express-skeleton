@@ -30,7 +30,6 @@
     "mocha-junit-reporter": "^1.17.0",
     "nyc": "^11.6.0"
   },
-  ,
   "nyc": {
     "include": [
       "src/*.js",
@@ -72,5 +71,4 @@
     },
     "all": true
   }
-
 }
